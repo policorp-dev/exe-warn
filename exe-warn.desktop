@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Aviso EXE
+Exec=zenity --warning --text="Este é um programa do Windows (.exe), use Wine ou não execute."
+MimeType=application/x-ms-dos-executable;application/x-msi;
+NoDisplay=true
+Type=Application
+
