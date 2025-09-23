@@ -1,2 +1,3 @@
 exe-warn.desktop  usr/share/applications
 bin/* usr/bin
+mime/* etc/xdg/

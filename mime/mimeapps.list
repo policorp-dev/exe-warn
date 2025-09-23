@@ -1,0 +1,3 @@
+[Default Applications]
+application/x-ms-dos-executable=exe-warn.desktop
+application/x-msi=exe-warn.desktop
