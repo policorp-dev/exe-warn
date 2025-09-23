@@ -1,5 +1,5 @@
 Source: exe-warn
-Section: unknown
+Section: misc
 Priority: optional
 Maintainer: OEM Policorp <suporte@policorp.com.br>
 Rules-Requires-Root: no
