@@ -1,2 +1,2 @@
 exe-warn.desktop  usr/share/applications
-bin/* usr/sbin
+bin/* usr/bin
