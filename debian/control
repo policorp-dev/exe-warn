@@ -15,5 +15,6 @@ Architecture: any
 Depends:
  ${shlibs:Depends},
  ${misc:Depends},
+ python3-tk,
 Description: <insert up to 60 chars description>
  <Insert long description, indented with spaces.>
