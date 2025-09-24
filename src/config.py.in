@@ -1,0 +1,6 @@
+# Ficheiro gerado pelo Meson. NÃO EDITE DIRETAMENTE O FICHEIRO .py.
+# As alterações devem ser feitas aqui (em config.py.in) e nos ficheiros meson.build.
+
+APPNAME = '@pkg_name@'
+VERSION = '@VERSION@'
+PKGDATADIR = '@pkgdatadir@'

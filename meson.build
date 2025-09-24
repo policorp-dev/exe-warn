@@ -4,6 +4,9 @@ project('exe-warn',
   default_options: [ 'warning_level=2', 'werror=false', ],
 )
 
+pkg_name = meson.project_name()
+pkgdatadir = get_option('prefix') / get_option('datadir') / pkg_name
+
 i18n = import('i18n')
 gnome = import('gnome')
 

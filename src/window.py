@@ -16,15 +16,16 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
-
 # window.py
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 import subprocess
 import re
+import json
+import os
+from gi.repository import Adw, Gtk, Gio
+from .config import APPNAME, PKGDATADIR, VERSION
 import gettext
-from gi.repository import Adw, Gtk
-APPNAME = "exe-warn"
 gettext.bindtextdomain(APPNAME, "/usr/share/locale")
 gettext.textdomain(APPNAME)
 _ = gettext.gettext
@@ -33,43 +34,67 @@ _ = gettext.gettext
 class ExeWarnWindow(Adw.ApplicationWindow):
     __gtype_name__ = "ExeWarnWindow"
 
-    subtitle_label = Gtk.Template.Child()
-    message_label = Gtk.Template.Child()
-    wine_button = Gtk.Template.Child()
-    native_button = Gtk.Template.Child()
+    subtitle_label: Gtk.Label = Gtk.Template.Child()
+    message_label: Gtk.Label = Gtk.Template.Child()
+    wine_button: Gtk.Button = Gtk.Template.Child()
+    native_button: Gtk.Button = Gtk.Template.Child()
+
+    matched_rule = None # Variável para guardar a regra encontrada
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         app = self.get_application()
         if getattr(app, "file_arg", None):
-            # --- ESTADO COM FICHEIRO SELECIONADO ---
             filepath = app.file_arg
             filename = filepath.split("/")[-1]
-
-            # Tenta extrair um nome de aplicativo mais limpo
-            app_name_match = re.match(r"(\w+?)(installer|setup)?\.exe", filename, re.IGNORECASE)
-            app_name = app_name_match.group(1).capitalize() if app_name_match else _("This app")
-
-            # Define o título da janela (nomes de ficheiros não são traduzidos)
             self.set_title(filename)
 
-            # --- NOVO PADRÃO: PEGAR, FORMATAR, DEFINIR ---
+            apps_db = []
+            try:
+                db_path = os.path.join(PKGDATADIR, 'apps.json')
+                with open(db_path, 'r') as f:
+                    apps_db = json.load(f)
+            except (FileNotFoundError, json.JSONDecodeError) as e:
+                print(f"Erro ao carregar apps.json: {e}")
 
-            # Atualiza o subtítulo
-            original_subtitle = self.subtitle_label.get_label()
-            self.subtitle_label.set_label(original_subtitle.format(app_name=app_name))
+            # Procura por uma correspondência na base de dados
+            self.matched_rule = None
+            for rule in apps_db:
+                if 'regex' in rule and 'windows' in rule['regex']:
+                    pattern = rule['regex']['windows']
+                    if re.search(pattern, filename, re.IGNORECASE):
+                        self.matched_rule = rule
+                        break
 
-            # Atualiza a mensagem principal
-            original_message = self.message_label.get_label()
-            self.message_label.set_label(original_message.format(filename=filename))
+            if self.matched_rule:
+                app_name = self.matched_rule.get('alternative', {}).get('name', self.matched_rule.get('name', _("App")))
 
-            # Atualiza o texto do botão de instalação nativo
-            original_button_text = self.native_button.get_label()
-            self.native_button.set_label(original_button_text.format(app_name=app_name))
+                original_subtitle = self.subtitle_label.get_label()
+                self.subtitle_label.set_label(original_subtitle.format( filename=filename, app_name=app_name))
+
+                main_message = self.matched_rule.get('mainMessage')
+                #if main_message:
+                 #   self.message_label.set_label(_(main_message))
+                #else:
+                original_message = self.message_label.get_label()
+                self.message_label.set_label(original_message.format(filename=filename))
+
+                original_button_text = self.native_button.get_label()
+                self.native_button.set_label(original_button_text.format(app_name=app_name))
+
+                self.native_button.set_visible(True)
+                self.wine_button.set_visible(True)
+                #is_actionable = any(key in self.matched_rule for key in ['flatpak', 'apt', 'webLink'])
+                is_clickable = 'flatpak' in self.matched_rule
+                self.native_button.set_sensitive(is_clickable)
+
+            else:
+                self.subtitle_label.set_label(_("Unknown Windows application"))
+                self.message_label.set_label(_("Running this application is not recommended as its origin is unknown and it may pose a security risk."))
+                self.native_button.set_visible(False)
+                self.wine_button.set_visible(True)
         else:
-            # --- ESTADO SEM FICHEIRO SELECIONADO ---
-            # Para este estado, continuamos a definir os textos diretamente, pois são simples.
             self.set_title(_("No file selected"))
             self.subtitle_label.set_label(_("Open a .exe file to continue"))
             self.message_label.set_text("")
@@ -77,16 +102,26 @@ class ExeWarnWindow(Adw.ApplicationWindow):
             self.wine_button.set_visible(False)
 
     @Gtk.Template.Callback()
-    def on_close_clicked(self, button):
-        self.close()
-
-    @Gtk.Template.Callback()
     def on_wine_clicked(self, button):
-        print("WINDOWS")
+        self.close()
         # subprocess.Popen(["flatpak", "install", "-y", "flathub", "org.winehq.Wine"])
 
     @Gtk.Template.Callback()
     def on_native_clicked(self, button):
-        print("INSTALL")
-        # subprocess.Popen(["gnome-software", ""])
+        if not self.matched_rule:
+            return
+
+        if 'flatpak' in self.matched_rule:
+            flatpak_id = self.matched_rule['flatpak']['id']
+            print(f"Installing Flatpak: {flatpak_id}")
+            subprocess.Popen(["gnome-software", f"--details={flatpak_id}"])
+       # elif 'apt' in self.matched_rule:
+       #     apt_pkg = self.matched_rule['apt']
+       #     print(f"Opening Apt URL for: {apt_pkg}")
+       #     uri = f"apt:{apt_pkg}"
+       #     Gtk.show_uri(self.get_display(), uri, Gtk.get_current_event_time())
+       # elif 'webLink' in self.matched_rule:
+       #     url = self.matched_rule['webLink']['href']
+       #     print(f"Opening web link: {url}")
+       #     Gtk.show_uri(self.get_display(), url, Gtk.get_current_event_time())
 

@@ -1,4 +1,4 @@
-Source: exec-warn
+Source: exe-warn
 Section: gnome
 Priority: optional
 Maintainer: usuario <usuario@unknown>
@@ -10,10 +10,10 @@ Homepage: <insert the upstream URL, if relevant>
 #Vcs-Browser: https://salsa.debian.org/debian/exec-warn
 #Vcs-Git: https://salsa.debian.org/debian/exec-warn.git
 
-Package: exec-warn
+Package: exe-warn
 Architecture: any
 Depends:
  ${shlibs:Depends},
  ${misc:Depends}, python3-gi, gir1.2-gtk-4.0, libadwaita-1-0
-Description: <insert up to 60 chars description>
+Description: Exibe um alerta quando o usuário tenta executar um arquivo .exe do Windows no Linux, explicando que ele não tem suporte nativo e sugerindo o uso de uma versão compatível com Linux.
  <Insert long description, indented with spaces.>

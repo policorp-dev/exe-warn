@@ -27,6 +27,8 @@ test('Validate appstream file', appstreamcli,
 install_data('org.gnome.ExeWarn.gschema.xml',
   install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
 )
+pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
+install_data('apps.json', install_dir: pkgdatadir)
 
 compile_schemas = find_program('glib-compile-schemas', required: false, disabler: true)
 test('Validate schema file',
