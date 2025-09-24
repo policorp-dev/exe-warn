@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="ExeWarnWindow" parent="AdwApplicationWindow">
+    <property name="title" translatable="yes">Exe Warn</property>
+    <property name="default-width">600</property>
+    <property name="default-height">300</property>
+    <property name="resizable">False</property>
+
+    <property name="content">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar" id="header_bar">
+            <property name="title-widget">
+              <object class="AdwWindowTitle">
+                <property name="title" bind-source="ExeWarnWindow" bind-property="title" bind-flags="sync-create"/>
+              </object>
+            </property>
+          </object>
+        </child>
+        <property name="content">
+          <object class="AdwClamp">
+            <property name="maximum-size">480</property>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <property name="spacing">24</property>
+                <property name="margin-top">24</property>
+                <property name="margin-bottom">24</property>
+                <property name="margin-start">24</property>
+                <property name="margin-end">24</property>
+                <property name="valign">center</property>
+
+                <child>
+                  <object class="GtkLabel" id="subtitle_label">
+                    <property name="label" translatable="yes">{app_name} can be installed from Software</property>
+                    <property name="xalign">0</property>
+                    <style>
+                      <class name="title-3"/>
+                    </style>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">horizontal</property>
+                    <property name="spacing">12</property>
+                    <property name="vexpand">True</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="icon-name">dialog-warning-symbolic</property>
+                        <property name="pixel-size">48</property>
+                        <property name="halign">start</property>
+                        <property name="valign">start</property>
+                        <property name="margin-top">6</property>
+                        <style>
+                          <class name="warning"/>
+                        </style>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">12</property>
+                        <child>
+                          <object class="GtkLabel" id="message_label">
+                            <property name="wrap">True</property>
+                            <property name="xalign">0</property>
+                            <property name="label" translatable="yes">{filename} is a Windows application and is not compatible with Linux.
+Running files of this type can put your computer and personal data at risk,and is not guaranteed to work on your system.
+There may be a similar application already compatible with Linux.
+                            </property>
+                            <style>
+                              <class name="body"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">horizontal</property>
+                    <property name="spacing">12</property>
+                    <property name="halign">end</property>
+                    <property name="margin-top">12</property>
+                    <child>
+                      <object class="GtkButton" id="wine_button">
+                        <property name="label" translatable="yes">Install Windows App Support</property>
+                        <property name="has-frame">True</property>
+                        <style>
+                          <class name="flat"/>
+                        </style>
+                        <signal name="clicked" handler="on_wine_clicked"/>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="GtkButton" id="native_button">
+                        <property name="label" translatable="yes">Install {app_name}</property>
+                        <style>
+                          <class name="suggested-action"/>
+                        </style>
+                        <signal name="clicked" handler="on_native_clicked"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+</interface>

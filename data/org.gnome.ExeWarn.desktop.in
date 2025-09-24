@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Exe-Warm
+Exec=exe-warn
+Icon=org.gnome.ExeWarn
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true
+DBusActivatable=true
+MimeType=application/x-ms-dos-executable;application/x-msi;

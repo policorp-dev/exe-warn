@@ -1,48 +1,56 @@
-% exe-warn(SECTION) | User Commands
+% exec-warn(SECTION) | User Commands
 %
-% "September 22 2025"
+% "September 23 2025"
 
 [comment]: # The lines above form a Pandoc metadata block. They must be
 [comment]: # the first ones in the file.
 [comment]: # See https://pandoc.org/MANUAL.html#metadata-blocks for details.
 
 [comment]: # pandoc -s -f markdown -t man package.md -o package.1
-[comment]: # 
+[comment]: #
 [comment]: # A manual page package.1 will be generated. You may view the
 [comment]: # manual page with: nroff -man package.1 | less. A typical entry
 [comment]: # in a Makefile or Makefile.am is:
-[comment]: # 
+[comment]: #
 [comment]: # package.1: package.md
 [comment]: #         pandoc --standalone --from=markdown --to=man $< --output=$@
-[comment]: # 
+[comment]: #
 [comment]: # The pandoc binary is found in the pandoc package. Please remember
 [comment]: # that if you create the nroff version in one of the debian/rules
 [comment]: # file targets, such as build, you will need to include pandoc in
 [comment]: # your Build-Depends control field.
 
+[comment]: # lowdown is a low dependency, lightweight alternative to
+[comment]: # pandoc as a markdown to manpage translator. Use with:
+[comment]: #
+[comment]: # package.1: package.md
+[comment]: #         lowdown -s -Tman -o $@ $<
+[comment]: #
+[comment]: # And add lowdown to the Build-Depends control field.
+
 [comment]: # Remove the lines starting with '[comment]:' in this file in order
-[comment]: # to avoid warning messages from pandoc.
+[comment]: # to avoid warning messages.
 
 # NAME
 
-exe-warn - program to do something
+exec-warn - program to do something
 
 # SYNOPSIS
 
-**exe-warn** **-e** _this_ [**\-\-example=that**] [{**-e** | **\-\-example**} _this_]
+**exec-warn** **-e** _this_ [**\-\-example=that**] [{**-e** | **\-\-example**} _this_]
                  [{**-e** | **\-\-example**} {_this_ | _that_}]
 
-**exe-warn** [{**-h** | *\-\-help**} | {**-v** | **\-\-version**}]
+**exec-warn** [{**-h** | *\-\-help**} | {**-v** | **\-\-version**}]
 
 # DESCRIPTION
 
-This manual page documents briefly the **exe-warn** and **bar** commands.
+This manual page documents briefly the **exec-warn** and **bar** commands.
 
 This manual page was written for the Debian distribution because the
 original program does not have a manual page. Instead, it has documentation
 in the GNU info(1) format; see below.
 
-**exe-warn** is a program that...
+**exec-warn** is a program that...
 
 # OPTIONS
 
@@ -63,11 +71,11 @@ a complete description, see the **info**(1) files.
 
 /etc/foo.conf
 :   The system-wide configuration file to control the behaviour of
-    exe-warn. See **foo.conf**(5) for further details.
+    exec-warn. See **foo.conf**(5) for further details.
 
 ${HOME}/.foo.conf
 :   The per-user configuration file to control the behaviour of
-    exe-warn. See **foo.conf**(5) for further details.
+    exec-warn. See **foo.conf**(5) for further details.
 
 # ENVIRONMENT
 
@@ -83,7 +91,7 @@ Bad configuration file. Exiting.
 :   The configuration file seems to contain a broken configuration
     line. Use the **\-\-verbose** option, to get more info.
 
-**exe-warn** provides some return codes, that can be used in scripts:
+**exec-warn** provides some return codes, that can be used in scripts:
 
     Code Diagnostic
     0 Program exited successfully.
@@ -104,12 +112,12 @@ available via the **info**(1) system.
 
 # AUTHOR
 
-OEM Policorp <suporte@policorp.com.br>
+usuario <usuario@unknown>
 :   Wrote this manpage for the Debian system.
 
 # COPYRIGHT
 
-Copyright © 2007 OEM Policorp
+Copyright © 2007 usuario
 
 This manual page was written for the Debian system (and may be used by
 others).

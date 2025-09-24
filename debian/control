@@ -1,20 +1,19 @@
-Source: exe-warn
-Section: misc
+Source: exec-warn
+Section: gnome
 Priority: optional
-Maintainer: OEM Policorp <suporte@policorp.com.br>
+Maintainer: usuario <usuario@unknown>
 Rules-Requires-Root: no
 Build-Depends:
- debhelper-compat (= 13),
-Standards-Version: 4.6.2
+ debhelper-compat (= 13), meson, ninja-build, python3-gi, libgtk-4-dev, libadwaita-1-dev
+Standards-Version: 4.7.2
 Homepage: <insert the upstream URL, if relevant>
-#Vcs-Browser: https://salsa.debian.org/debian/exe-warn
-#Vcs-Git: https://salsa.debian.org/debian/exe-warn.git
+#Vcs-Browser: https://salsa.debian.org/debian/exec-warn
+#Vcs-Git: https://salsa.debian.org/debian/exec-warn.git
 
-Package: exe-warn
+Package: exec-warn
 Architecture: any
 Depends:
  ${shlibs:Depends},
- ${misc:Depends},
- python3-tk,
+ ${misc:Depends}, python3-gi, gir1.2-gtk-4.0, libadwaita-1-0
 Description: <insert up to 60 chars description>
  <Insert long description, indented with spaces.>

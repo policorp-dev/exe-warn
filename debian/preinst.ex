@@ -1,5 +1,5 @@
 #!/bin/sh
-# preinst script for exe-warn.
+# preinst script for exec-warn.
 #
 # See: dh_installdeb(1).
 

@@ -1,10 +1,9 @@
-exe-warn for Debian
-------------------
+exec-warn for Debian
+-------------------
 
 <This file describes information about the source package, see Debian policy
 manual section 4.14. You WILL either need to modify or delete this file.>
 
 
 
- -- OEM Policorp <suporte@policorp.com.br>  Mon, 22 Sep 2025 15:34:27 -0300
-
+ -- usuario <usuario@unknown>  Tue, 23 Sep 2025 15:19:09 -0400

@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the exe-warn package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: exe-warn\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-24 10:37-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/org.gnome.ExeWarn.desktop.in:3
+msgid "Exe-Warm"
+msgstr ""
+
+#: data/org.gnome.ExeWarn.desktop.in:9
+msgid "GTK;"
+msgstr ""
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:7
+msgid "Exe-warn"
+msgstr ""
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:8
+msgid ""
+"Displays an alert when the user tries to run a Windows .exe file on Linux, "
+"explaining that it is not natively supported and suggesting the use of a "
+"Linux-compatible version."
+msgstr ""
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:10
+msgid ""
+"When the user attempts to run an .exe file, the application intercepts the "
+"action and displays an informative message, explaining that:"
+msgstr ""
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:11
+msgid ""
+".exe files are applications developed for Windows and are not natively "
+"supported on Linux."
+msgstr ""
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:12
+msgid ""
+"Running applications from unknown sources can compromise the security of the "
+"system and personal data."
+msgstr ""
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:13
+msgid ""
+"Whenever available, the user is advised to search for an equivalent or "
+"compatible version for Linux, ensuring greater security and performance."
+msgstr ""
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:14
+msgid ""
+"Thus, the application acts as a preventative alert, preventing compatibility "
+"errors and encouraging the use of software suitable for the Linux "
+"environment."
+msgstr ""
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:57
+#: data/org.gnome.ExeWarn.metainfo.xml.in:61
+msgid "A caption"
+msgstr ""
+
+#: src/window.py:52
+msgid "This app"
+msgstr ""
+
+#. --- ESTADO SEM FICHEIRO SELECIONADO ---
+#. Para este estado, continuamos a definir os textos diretamente, pois são simples.
+#: src/window.py:73
+msgid "No file selected"
+msgstr ""
+
+#: src/window.py:74
+msgid "Open a .exe file to continue"
+msgstr ""
+
+#: src/window.ui:6
+msgid "Exe Warn"
+msgstr ""
+
+#: src/window.ui:37
+#, python-brace-format
+msgid "{app_name} can be installed from Software"
+msgstr ""
+
+#: src/window.ui:71
+#, python-brace-format
+msgid ""
+"{filename} is a Windows application and is not compatible with Linux.\n"
+"Running files of this type can put your computer and personal data at risk,"
+"and is not guaranteed to work on your system.\n"
+"There may be a similar application already compatible with Linux.\n"
+"                            "
+msgstr ""
+
+#: src/window.ui:93
+msgid "Install Windows App Support"
+msgstr ""
+
+#: src/window.ui:104
+#, python-brace-format
+msgid "Install {app_name}"
+msgstr ""

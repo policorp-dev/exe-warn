@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Aviso EXE
-Exec=exe-warn
-MimeType=application/x-ms-dos-executable;application/x-msi;
-NoDisplay=true
-Type=Application
-

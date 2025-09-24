@@ -48,17 +48,17 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
   <!ENTITY dhfirstname "FIRSTNAME">
   <!ENTITY dhsurname   "SURNAME">
   <!-- dhusername could also be set to "&dhfirstname; &dhsurname;". -->
-  <!ENTITY dhusername  "OEM Policorp">
-  <!ENTITY dhemail     "suporte@policorp.com.br">
+  <!ENTITY dhusername  "usuario">
+  <!ENTITY dhemail     "usuario@unknown">
   <!-- SECTION should be 1-8, maybe w/ subsection other parameters are
        allowed: see man(7), man(1) and
        http://www.tldp.org/HOWTO/Man-Page/q2.html. -->
   <!ENTITY dhsection   "SECTION">
   <!-- TITLE should be something like "User commands" or similar (see
        http://www.tldp.org/HOWTO/Man-Page/q2.html). -->
-  <!ENTITY dhtitle     "exe-warn User Manual">
-  <!ENTITY dhucpackage "Exe-warn">
-  <!ENTITY dhpackage   "exe-warn">
+  <!ENTITY dhtitle     "exec-warn User Manual">
+  <!ENTITY dhucpackage "Exec-warn">
+  <!ENTITY dhpackage   "exec-warn">
 ]>
 
 <refentry>
@@ -270,7 +270,7 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
   </refsect1>
   <refsect1 id="see_also">
     <title>SEE ALSO</title>
-    <!-- In alpabetical order. -->
+    <!-- In alphabetical order. -->
     <para><citerefentry>
         <refentrytitle>bar</refentrytitle>
         <manvolnum>1</manvolnum>
@@ -288,4 +288,3 @@ man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
       </citerefentry> system.</para>
   </refsect1>
 </refentry>
-
