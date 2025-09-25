@@ -29,17 +29,21 @@ import gettext
 gettext.bindtextdomain(APPNAME, "/usr/share/locale")
 gettext.textdomain(APPNAME)
 _ = gettext.gettext
+caminho_do_policorp_store = "/usr/share/policorp-linux-store/policorp-linux-store"
 
 @Gtk.Template(resource_path="/org/gnome/ExeWarn/window.ui")
 class ExeWarnWindow(Adw.ApplicationWindow):
     __gtype_name__ = "ExeWarnWindow"
 
+    subtitle_label_flatpak: Gtk.Label = Gtk.Template.Child()
+    subtitle_label_webLink: Gtk.Label = Gtk.Template.Child()
+    subtitle_label_unknown: Gtk.Label = Gtk.Template.Child()
     subtitle_label: Gtk.Label = Gtk.Template.Child()
     message_label: Gtk.Label = Gtk.Template.Child()
     wine_button: Gtk.Button = Gtk.Template.Child()
     native_button: Gtk.Button = Gtk.Template.Child()
 
-    matched_rule = None # Variável para guardar a regra encontrada
+    matched_rule = None
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -58,7 +62,6 @@ class ExeWarnWindow(Adw.ApplicationWindow):
             except (FileNotFoundError, json.JSONDecodeError) as e:
                 print(f"Erro ao carregar apps.json: {e}")
 
-            # Procura por uma correspondência na base de dados
             self.matched_rule = None
             for rule in apps_db:
                 if 'regex' in rule and 'windows' in rule['regex']:
@@ -66,17 +69,23 @@ class ExeWarnWindow(Adw.ApplicationWindow):
                     if re.search(pattern, filename, re.IGNORECASE):
                         self.matched_rule = rule
                         break
-
+            self.subtitle_label_flatpak.set_visible(False)
+            self.subtitle_label_webLink.set_visible(False)
+            self.subtitle_label_unknown.set_visible(False)
+            self.subtitle_label.set_visible(False)
             if self.matched_rule:
                 app_name = self.matched_rule.get('alternative', {}).get('name', self.matched_rule.get('name', _("App")))
 
-                original_subtitle = self.subtitle_label.get_label()
-                self.subtitle_label.set_label(original_subtitle.format( filename=filename, app_name=app_name))
+                if 'flatpak' in self.matched_rule:
+                    original_subtitle_flatpak = self.subtitle_label_flatpak.get_label()
+                    self.subtitle_label_flatpak.set_label(original_subtitle_flatpak.format( filename=filename, app_name=app_name))
+                    self.subtitle_label_flatpak.set_visible(True)
+                elif 'webLink' in self.matched_rule:
+                    original_subtitle_webLink = self.subtitle_label_webLink.get_label()
+                    self.subtitle_label_webLink.set_label(original_subtitle_webLink.format( filename=filename, app_name=app_name))
+                    self.subtitle_label_webLink.set_visible(True)
 
-                main_message = self.matched_rule.get('mainMessage')
-                #if main_message:
-                 #   self.message_label.set_label(_(main_message))
-                #else:
+                #main_message = self.matched_rule.get('mainMessage')
                 original_message = self.message_label.get_label()
                 self.message_label.set_label(original_message.format(filename=filename))
 
@@ -85,18 +94,24 @@ class ExeWarnWindow(Adw.ApplicationWindow):
 
                 self.native_button.set_visible(True)
                 self.wine_button.set_visible(True)
-                #is_actionable = any(key in self.matched_rule for key in ['flatpak', 'apt', 'webLink'])
-                is_clickable = 'flatpak' in self.matched_rule
+                is_clickable = any(key in self.matched_rule for key in ['flatpak', 'webLink'])
                 self.native_button.set_sensitive(is_clickable)
+                if not is_clickable:
+                    self.wine_button.remove_css_class('flat')
+                    self.wine_button.add_css_class('suggested-action')
 
             else:
-                self.subtitle_label.set_label(_("Unknown Windows application"))
-                self.message_label.set_label(_("Running this application is not recommended as its origin is unknown and it may pose a security risk."))
+                original_subtitle_unknown = self.subtitle_label_unknown.get_label()
+                self.subtitle_label_unknown.set_label(original_subtitle_unknown.format( filename=filename))
+                original_message_unknown = self.message_label.get_label()
+                self.message_label.set_label(original_message_unknown.format(filename=filename))
                 self.native_button.set_visible(False)
                 self.wine_button.set_visible(True)
+                self.subtitle_label_unknown.set_visible(True)
         else:
             self.set_title(_("No file selected"))
             self.subtitle_label.set_label(_("Open a .exe file to continue"))
+            self.subtitle_label.set_visible(True)
             self.message_label.set_text("")
             self.native_button.set_visible(False)
             self.wine_button.set_visible(False)
@@ -114,14 +129,34 @@ class ExeWarnWindow(Adw.ApplicationWindow):
         if 'flatpak' in self.matched_rule:
             flatpak_id = self.matched_rule['flatpak']['id']
             print(f"Installing Flatpak: {flatpak_id}")
-            subprocess.Popen(["gnome-software", f"--details={flatpak_id}"])
+            if flatpak_id == "org.libreoffice.LibreOffice":
+                self.on_exec_policorp_store("OnlyOffice", flatpak_id)
+                self.close()
+
+            uri = f"appstream://{flatpak_id}"
+            launcher = Gtk.UriLauncher.new(uri)
+            launcher.launch(None, None, None)
+            print(f"Pedido para abrir '{uri}' enviado via Gtk.UriLauncher.")
+            #subprocess.Popen(["gnome-software", f"--details={flatpak_id}"])
+            self.close()
+        elif 'webLink' in self.matched_rule:
+            url = self.matched_rule['webLink']['href']
+            print(f"Opening web link: {url}")
+            subprocess.Popen(["xdg-open", f"{url}"])
+            self.close()
        # elif 'apt' in self.matched_rule:
        #     apt_pkg = self.matched_rule['apt']
        #     print(f"Opening Apt URL for: {apt_pkg}")
        #     uri = f"apt:{apt_pkg}"
        #     Gtk.show_uri(self.get_display(), uri, Gtk.get_current_event_time())
-       # elif 'webLink' in self.matched_rule:
-       #     url = self.matched_rule['webLink']['href']
-       #     print(f"Opening web link: {url}")
-       #     Gtk.show_uri(self.get_display(), url, Gtk.get_current_event_time())
+
+    def on_exec_policorp_store(self, application, flatpak_id):
+        if os.path.exists(caminho_do_policorp_store):
+            comando = [caminho_do_policorp_store, "--application", application]
+            subprocess.Popen(comando)
+        else:
+            uri = f"appstream://{flatpak_id}"
+            launcher = Gtk.UriLauncher.new(uri)
+            launcher.launch(None, None, None)
+            print(f"Pedido para abrir '{uri}' enviado via Gtk.UriLauncher.")
 

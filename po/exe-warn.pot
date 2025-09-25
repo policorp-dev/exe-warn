@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exe-warn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-24 16:28-0400\n"
+"POT-Creation-Date: 2025-09-25 15:56-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,25 +72,15 @@ msgstr ""
 msgid "A caption"
 msgstr ""
 
-#: src/window.py:71
+#: src/window.py:77
 msgid "App"
 msgstr ""
 
-#: src/window.py:93
-msgid "Unknown Windows application"
-msgstr ""
-
-#: src/window.py:94
-msgid ""
-"Running this application is not recommended as its origin is unknown and it "
-"may pose a security risk."
-msgstr ""
-
-#: src/window.py:98
+#: src/window.py:112
 msgid "No file selected"
 msgstr ""
 
-#: src/window.py:99
+#: src/window.py:113
 msgid "Open a .exe file to continue"
 msgstr ""
 
@@ -98,14 +88,26 @@ msgstr ""
 msgid "Exe Warn"
 msgstr ""
 
-#: src/window.ui:52
+#: src/window.ui:53
 #, python-brace-format
 msgid ""
 "<b>{filename}</b> has a similar one called <b>{app_name}</b> and can be "
 "installed from Gnome Software"
 msgstr ""
 
-#: src/window.ui:73
+#: src/window.ui:79
+#, python-brace-format
+msgid ""
+"<b>{filename}</b> has a similar one called <b>{app_name}</b> and can be "
+"installed from the vendor's website"
+msgstr ""
+
+#: src/window.ui:92
+#, python-brace-format
+msgid "We couldn't find a similar app for the <b>{filename}</b>"
+msgstr ""
+
+#: src/window.ui:113
 #, python-brace-format
 msgid ""
 "<b>{filename}</b> is a Windows application and is not compatible with "
@@ -116,11 +118,11 @@ msgid ""
 "application already compatible with Linux."
 msgstr ""
 
-#: src/window.ui:94
+#: src/window.ui:134
 msgid "Close"
 msgstr ""
 
-#: src/window.ui:105
+#: src/window.ui:145
 #, python-brace-format
 msgid "Install {app_name}"
 msgstr ""

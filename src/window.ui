@@ -45,11 +45,51 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkLabel" id="subtitle_label_flatpak">
+                        <property name="wrap">True</property>
+                        <property name="use-markup">True</property>
+                        <property name="justify">center</property>
+                        <property name="visible">False</property>
+                        <property name="label" translatable="yes">&lt;b&gt;{filename}&lt;/b&gt; has a similar one called &lt;b&gt;{app_name}&lt;/b&gt; and can be installed from Gnome Software</property>
+                        <property name="xalign">0</property>
+                        <style>
+                          <class name="title-3"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkLabel" id="subtitle_label">
                         <property name="wrap">True</property>
                         <property name="use-markup">True</property>
                         <property name="justify">center</property>
-                        <property name="label" translatable="yes">&lt;b&gt;{filename}&lt;/b&gt; has a similar one called &lt;b&gt;{app_name}&lt;/b&gt; and can be installed from Gnome Software</property>
+                        <property name="visible">False</property>
+                        <property name="label" translatable="yes"></property>
+                        <property name="xalign">0</property>
+                        <style>
+                          <class name="title-3"/>
+                        </style>
+                      </object>
+                     </child>
+                    <child>
+                      <object class="GtkLabel" id="subtitle_label_webLink">
+                        <property name="wrap">True</property>
+                        <property name="use-markup">True</property>
+                        <property name="justify">center</property>
+                        <property name="visible">False</property>
+                        <property name="label" translatable="yes">&lt;b&gt;{filename}&lt;/b&gt; has a similar one called &lt;b&gt;{app_name}&lt;/b&gt; and can be installed from the vendor's website</property>
+                        <property name="xalign">0</property>
+                        <style>
+                          <class name="title-3"/>
+                        </style>
+                      </object>
+                    </child>
+                  <child>
+                      <object class="GtkLabel" id="subtitle_label_unknown">
+                        <property name="wrap">True</property>
+                        <property name="use-markup">True</property>
+                        <property name="justify">center</property>
+                        <property name="visible">False</property>
+                        <property name="label" translatable="yes">We couldn't find a similar app for the &lt;b&gt;{filename}&lt;/b&gt;</property>
                         <property name="xalign">0</property>
                         <style>
                           <class name="title-3"/>

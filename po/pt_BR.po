@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exe-warn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-24 16:28-0400\n"
-"PO-Revision-Date: 2025-09-24 16:31-0400\n"
+"POT-Creation-Date: 2025-09-25 15:56-0400\n"
+"PO-Revision-Date: 2025-09-25 15:58-0400\n"
 "Last-Translator: Lucas Salles\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -88,27 +88,15 @@ msgstr ""
 msgid "A caption"
 msgstr "Uma legenda"
 
-#: src/window.py:71
+#: src/window.py:77
 msgid "App"
 msgstr "App"
 
-#: src/window.py:93
-msgid "Unknown Windows application"
-msgstr "Aplicativo desconhecido do Windows"
-
-#: src/window.py:94
-msgid ""
-"Running this application is not recommended as its origin is unknown and it "
-"may pose a security risk."
-msgstr ""
-"Não é recomendado executar este aplicativo, pois sua origem é desconhecida e "
-"pode representar um risco à segurança."
-
-#: src/window.py:98
+#: src/window.py:112
 msgid "No file selected"
 msgstr "Nenhum arquivo selecionado"
 
-#: src/window.py:99
+#: src/window.py:113
 msgid "Open a .exe file to continue"
 msgstr "Abra um arquivo .exe para continuar"
 
@@ -116,7 +104,7 @@ msgstr "Abra um arquivo .exe para continuar"
 msgid "Exe Warn"
 msgstr "Exe Warn"
 
-#: src/window.ui:52
+#: src/window.ui:53
 #, python-brace-format
 msgid ""
 "<b>{filename}</b> has a similar one called <b>{app_name}</b> and can be "
@@ -125,7 +113,22 @@ msgstr ""
 "<b>{filename}</b> tem um similar chamado <b>{app_name}</b> e pode ser "
 "instalado pelo Gnome Software"
 
-#: src/window.ui:73
+#: src/window.ui:79
+#, python-brace-format
+msgid ""
+"<b>{filename}</b> has a similar one called <b>{app_name}</b> and can be "
+"installed from the vendor's website"
+msgstr ""
+"<b>{filename}</b> tem um similar chamado <b>{app_name}</b> e pode ser "
+"instalado pelo site do Fornecedor"
+
+#: src/window.ui:92
+#, python-brace-format
+msgid "We couldn't find a similar app for the <b>{filename}</b>"
+msgstr ""
+"Não conseguimos encontrar um aplicativo semelhante para <b>{filename}</b>"
+
+#: src/window.ui:113
 #, python-brace-format
 msgid ""
 "<b>{filename}</b> is a Windows application and is not compatible with "
@@ -142,14 +145,24 @@ msgstr ""
 "pessoais em risco, e não há garantia de que funcione no seu sistema. Pode "
 "haver um aplicativo semelhante compatível com Linux."
 
-#: src/window.ui:94
+#: src/window.ui:134
 msgid "Close"
 msgstr "Fechar"
 
-#: src/window.ui:105
+#: src/window.ui:145
 #, python-brace-format
 msgid "Install {app_name}"
 msgstr "Instalar {app_name}"
+
+#~ msgid "Unknown Windows application"
+#~ msgstr "Aplicativo desconhecido do Windows"
+
+#~ msgid ""
+#~ "Running this application is not recommended as its origin is unknown and "
+#~ "it may pose a security risk."
+#~ msgstr ""
+#~ "Não é recomendado executar este aplicativo, pois sua origem é "
+#~ "desconhecida e pode representar um risco à segurança."
 
 #, python-brace-format
 #~ msgid "{app_name} can be installed from Software"
