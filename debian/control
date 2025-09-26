@@ -1,7 +1,7 @@
 Source: exe-warn
 Section: gnome
 Priority: optional
-Maintainer: Lucas <lucas.salles@policorp.com.br>
+Maintainer: Lucas Salles <lucas.salles@policorp.com.br>
 Rules-Requires-Root: no
 Build-Depends:
  debhelper-compat (= 13), meson, ninja-build, python3-gi, libgtk-4-dev, libadwaita-1-dev
