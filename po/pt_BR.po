@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exe-warn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-25 15:56-0400\n"
-"PO-Revision-Date: 2025-09-25 15:58-0400\n"
+"POT-Creation-Date: 2025-09-26 14:27-0400\n"
+"PO-Revision-Date: 2025-09-26 14:29-0400\n"
 "Last-Translator: Lucas Salles\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -88,17 +88,55 @@ msgstr ""
 msgid "A caption"
 msgstr "Uma legenda"
 
-#: src/window.py:77
+#: src/window.py:82
 msgid "App"
 msgstr "App"
 
-#: src/window.py:112
+#: src/window.py:119
 msgid "No file selected"
 msgstr "Nenhum arquivo selecionado"
 
-#: src/window.py:113
+#: src/window.py:120
 msgid "Open a .exe file to continue"
 msgstr "Abra um arquivo .exe para continuar"
+
+#: src/window.py:148
+msgid "this app"
+msgstr "este aplicativo"
+
+#: src/window.py:150
+msgid "Add Application Repository?"
+msgstr "Adicionar repositório de aplicativos?"
+
+#: src/window.py:151
+#, python-brace-format
+msgid ""
+"To install {app_name}, the main Flathub application repository needs to be "
+"added to your system."
+msgstr ""
+"Para instalar {app_name}, o repositório principal do aplicativo Flathub "
+"precisa ser adicionado ao seu sistema."
+
+#: src/window.py:153
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/window.py:154
+msgid "Add Repository"
+msgstr "Adicionar repositório"
+
+#: src/window.py:170
+msgid "Repository Added"
+msgstr "Repositório adicionado"
+
+#: src/window.py:170
+msgid ""
+"The Flathub repository has been added. Please try the installation again."
+msgstr "O repositório Flathub foi adicionado. Tente instalar novamente."
+
+#: src/window.py:171
+msgid "OK"
+msgstr "OK"
 
 #: src/window.ui:6
 msgid "Exe Warn"
@@ -170,9 +208,6 @@ msgstr "Instalar {app_name}"
 
 #~ msgid "Install Windows App Support"
 #~ msgstr "Instalar o Suporte ao Aplicativo Windows"
-
-#~ msgid "This app"
-#~ msgstr "Este aplicativo"
 
 #, fuzzy, python-brace-format
 #~ msgid ""

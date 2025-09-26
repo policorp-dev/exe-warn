@@ -8,4 +8,5 @@ Categories=Utility;
 Keywords=GTK;
 StartupNotify=true
 DBusActivatable=true
-MimeType=application/x-ms-dos-executable;application/x-msi;
+NoDisplay=true
+MimeType=application/x-ms-dos-executable;application/x-msi;application/vnd.microsoft.portable-executable;application/msix;

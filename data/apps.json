@@ -1447,10 +1447,10 @@
             "windows": "officesetup.*.(exe|msi)"
         },
         "name": "Microsoft Office",
-        "flatpak": { "remote": "flathub", "id": "org.libreoffice.LibreOffice" },
-        "desktopLauncher": "org.libreoffice.LibreOffice.desktop",
+        "flatpak": { "remote": "flathub", "id": "org.onlyoffice.desktopeditors" },
+        "desktopLauncher": "org.onlyoffice.desktopeditors.desktop",
         "alternative": {
-            "name": "LibreOffice"
+            "name": "OnlyOffice"
         }
     },
     {

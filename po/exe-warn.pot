@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exe-warn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-25 15:56-0400\n"
+"POT-Creation-Date: 2025-09-26 14:27-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,16 +72,52 @@ msgstr ""
 msgid "A caption"
 msgstr ""
 
-#: src/window.py:77
+#: src/window.py:82
 msgid "App"
 msgstr ""
 
-#: src/window.py:112
+#: src/window.py:119
 msgid "No file selected"
 msgstr ""
 
-#: src/window.py:113
+#: src/window.py:120
 msgid "Open a .exe file to continue"
+msgstr ""
+
+#: src/window.py:148
+msgid "this app"
+msgstr ""
+
+#: src/window.py:150
+msgid "Add Application Repository?"
+msgstr ""
+
+#: src/window.py:151
+#, python-brace-format
+msgid ""
+"To install {app_name}, the main Flathub application repository needs to be "
+"added to your system."
+msgstr ""
+
+#: src/window.py:153
+msgid "Cancel"
+msgstr ""
+
+#: src/window.py:154
+msgid "Add Repository"
+msgstr ""
+
+#: src/window.py:170
+msgid "Repository Added"
+msgstr ""
+
+#: src/window.py:170
+msgid ""
+"The Flathub repository has been added. Please try the installation again."
+msgstr ""
+
+#: src/window.py:171
+msgid "OK"
 msgstr ""
 
 #: src/window.ui:6
