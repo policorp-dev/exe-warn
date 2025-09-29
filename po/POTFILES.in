@@ -1,0 +1,8 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/org.gnome.ExeWarn.desktop.in
+data/org.gnome.ExeWarn.metainfo.xml.in
+data/org.gnome.ExeWarn.gschema.xml
+src/main.py
+src/window.py
+src/window.ui

@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: <url://example.com>
-Upstream-Name: exe-warn
+Upstream-Name: exec-warn
 Upstream-Contact: <preferred name and address to reach the upstream project>
 
 Files:
@@ -13,7 +13,7 @@ License: GPL-2.0+
 Files:
  debian/*
 Copyright:
- 2025 OEM Policorp <suporte@policorp.com.br>
+ 2025 usuario <usuario@unknown>
 License: GPL-2.0+
 
 License: GPL-2.0+
@@ -28,7 +28,7 @@ License: GPL-2.0+
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program. If not, see <https://www.gnu.org/licenses/>
+ along with this package. If not, see <https://www.gnu.org/licenses/>.
 Comment:
  On Debian systems, the complete text of the GNU General
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".

@@ -1,5 +1,5 @@
 #!/bin/sh
-# postinst script for exe-warn.
+# postinst script for exec-warn.
 #
 # See: dh_installdeb(1).
 
@@ -20,7 +20,6 @@ set -e
 
 case "$1" in
     configure)
-	    update-desktop-database /usr/share/applications/
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

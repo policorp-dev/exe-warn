@@ -1,5 +1,5 @@
 #!/bin/sh
-# postrm script for exe-warn.
+# postrm script for exec-warn.
 #
 # See: dh_installdeb(1).
 
@@ -21,7 +21,6 @@ set -e
 
 case "$1" in
     purge|remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
-	    update-desktop-database /usr/share/applications/
     ;;
 
     *)

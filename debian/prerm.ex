@@ -1,5 +1,5 @@
 #!/bin/sh
-# prerm script for exe-warn.
+# prerm script for exec-warn.
 #
 # See: dh_installdeb(1).
 
