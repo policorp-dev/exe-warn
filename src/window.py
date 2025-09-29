@@ -28,6 +28,7 @@ from gi.repository import Adw, Gtk, Gio, GLib
 # --- Configuração para traduções e caminhos ---
 from .config import APPNAME, PKGDATADIR, VERSION
 import gettext
+import webbrowser
 gettext.bindtextdomain(APPNAME, "/usr/share/locale")
 gettext.textdomain(APPNAME)
 _ = gettext.gettext
@@ -159,7 +160,7 @@ class ExeWarnWindow(Adw.ApplicationWindow):
         elif 'webLink' in self.matched_rule:
             url = self.matched_rule['webLink']['href']
             print(f"Opening web link: {url}")
-            subprocess.Popen(["xdg-open", f"{url}"])
+            webbrowser.open(url)
             self.close()
 
 
