@@ -1,3 +1,15 @@
 [Default Applications]
-application/x-ms-dos-executable=exe-warn.desktop
-application/x-msi=exe-warn.desktop
+application/vnd.debian.binary-package=saltine.desktop
+application/vnd.appimage=org.gnome.ExeWarn.desktop
+application/x-iso9660-appimage=org.gnome.ExeWarn.desktop
+application/x-shellscript=org.gnome.ExeWarn.desktop
+application/x-sh=org.gnome.ExeWarn.desktop
+application/octet-stream=org.gnome.ExeWarn.desktop
+
+[Added Associations]
+application/vnd.debian.binary-package=saltine.desktop;
+application/vnd.appimage=org.gnome.ExeWarn.desktop;
+application/x-iso9660-appimage=org.gnome.ExeWarn.desktop;
+application/x-shellscript=org.gnome.ExeWarn.desktop;
+application/x-sh=org.gnome.ExeWarn.desktop;
+application/octet-stream=org.gnome.ExeWarn.desktop;

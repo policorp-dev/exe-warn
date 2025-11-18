@@ -1,3 +1,9 @@
+exe-warn (1.0.2) stable; urgency=medium
+
+  * Add suporte a appimage sh e bin #3
+
+ -- Lucas Salles <lucas.salles@policorp.com.br>  Tue, 18 Nov 2025 15:03:16 -0400
+
 exe-warn (1.0.1) stable; urgency=medium
 
   * Add lib webbrowser

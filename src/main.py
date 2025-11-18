@@ -19,6 +19,7 @@
 
 import sys
 import gi
+import os
 
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
@@ -34,20 +35,36 @@ class ExeWarnApplication(Adw.Application):
                          flags=Gio.ApplicationFlags.HANDLES_OPEN | Gio.ApplicationFlags.HANDLES_COMMAND_LINE,
                          resource_base_path='/org/gnome/ExeWarn')
         self.file_arg = None
+        self.file_path = None
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('about', self.on_about_action)
         self.create_action('preferences', self.on_preferences_action)
 
     def do_open(self, files, n_files, hint):
         if n_files > 0:
-            self.file_arg = files[0].get_path()
+            gfile = files[0]
+            self.file_path = gfile.get_path()
+            self.file_arg = gfile.get_basename()
+
         self.do_activate()
 
     def do_command_line(self, command_line):
         args = command_line.get_arguments()
 
         if len(args) > 1:
-            self.file_arg = args[1]
+            raw_filename = args[1]
+            self.file_arg = raw_filename
+
+            cwd = command_line.get_cwd()
+
+            if cwd and not os.path.isabs(raw_filename):
+                full_path = os.path.join(cwd, raw_filename)
+                self.file_path = os.path.abspath(full_path)
+            else:
+                self.file_path = os.path.abspath(raw_filename)
+
+            print(f"Arg: {self.file_arg}")
+            print(f"Path Absoluto: {self.file_path}")
 
         self.activate()
         return 0

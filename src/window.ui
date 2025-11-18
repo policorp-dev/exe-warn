@@ -83,6 +83,20 @@
                         </style>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkLabel" id="subtitle_label_linux">
+                        <property name="wrap">True</property>
+                        <property name="use-markup">True</property>
+                        <property name="justify">center</property>
+                        <property name="visible">False</property>
+                        <property name="label" translatable="yes">Are you sure you want to run this &lt;b&gt;{filename}&lt;/b&gt;?</property>
+                        <property name="xalign">0</property>
+                        <style>
+                          <class name="title-3"/>
+                        </style>
+                      </object>
+                    </child>
+
                   <child>
                       <object class="GtkLabel" id="subtitle_label_unknown">
                         <property name="wrap">True</property>
@@ -110,9 +124,38 @@
                             <property name="wrap">True</property>
                             <property name="use-markup">True</property>
                             <property name="justify">center</property>
+                            <property name="visible">False</property>
 <property name="label" translatable="yes">&lt;b&gt;{filename}&lt;/b&gt; is a Windows application and is not compatible with Linux.
 
 Running files of this type can put your computer and personal data at risk, and is not guaranteed to work on your system. There may be a similar application already compatible with Linux.</property>
+                            <style>
+                              <class name="body"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">horizontal</property>
+                    <property name="spacing">12</property>
+                    <property name="vexpand">True</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">12</property>
+                        <child>
+                          <object class="GtkLabel" id="message_label_linux">
+                            <property name="wrap">True</property>
+                            <property name="use-markup">True</property>
+                            <property name="justify">center</property>
+                            <property name="visible">False</property>
+<property name="label" translatable="yes">&lt;b&gt;{filename}&lt;/b&gt; it is an unknown package.
+
+Your computer and personal data may be vulnerable when running applications from unknown sources.</property>
                             <style>
                               <class name="body"/>
                             </style>

@@ -45,4 +45,8 @@ configure_file(
   install_dir: get_option('datadir') / 'dbus-1' / 'services'
 )
 
+install_data('mimeapps.list',
+  install_dir: '/etc' / 'xdg'
+)
+
 subdir('icons')
