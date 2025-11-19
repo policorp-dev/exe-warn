@@ -171,10 +171,19 @@ class ExeWarnWindow(Adw.ApplicationWindow):
 
             if sucesso:
                 print("Execução concluída com sucesso.")
+                self._enviar_notificacao(
+                    title=_("Exe Warn Notification"),
+                    body=_("If the application did not open, it may have some package dependency or need to be run as Administrator. Run via Terminal!"),
+                    icon_name="emblem-default-symbolic"
+                )
                 self.close()
             else:
                 print("Falha ao executar o arquivo.")
-                self._mostrar_erro("Não foi possível executar o arquivo.")
+                self._enviar_notificacao(
+                    title=_("Execution Failure"),
+                    body=_("The file could not be executed. Run via Terminal!"),
+                    icon_name="dialog-error-symbolic"
+                )
 
             return
 
@@ -265,12 +274,15 @@ class ExeWarnWindow(Adw.ApplicationWindow):
         """Verifica se o aplicativo está a ser executado como um Flatpak."""
         return os.path.exists('/.flatpak-info')
 
-    def _mostrar_erro(self, mensagem):
-        dialog = Adw.MessageDialog.new(
-            self,
-            "Erro ao executar",
-            mensagem,
-        )
-        dialog.add_response("ok", "OK")
-        dialog.set_default_response("ok")
-        dialog.present()
+    def _enviar_notificacao(self, title: str, body: str, icon_name: str = "dialog-information"):
+
+        notification = Gio.Notification.new(title)
+        notification.set_body(body)
+
+        notification.set_icon(Gio.ThemedIcon.new(icon_name))
+
+        app = self.get_application()
+        if app:
+            app.send_notification("exec-status", notification)
+        else:
+            print(f"Erro: Não foi possível obter o objeto Gio.Application para enviar a notificação: {title}")
