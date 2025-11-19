@@ -131,7 +131,7 @@ class ExeWarnWindow(Adw.ApplicationWindow):
                 original_message_linux = self.message_label_linux.get_label()
                 self.message_label_linux.set_label(original_message_linux.format(filename=filename))
 
-                self.native_button.set_label('Continue')
+                self.native_button.set_label(_('Continue')
 
                 self.native_button.set_visible(True)
                 self.wine_button.set_visible(True)
