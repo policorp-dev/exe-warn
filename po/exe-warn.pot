@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exe-warn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-26 14:27-0400\n"
+"POT-Creation-Date: 2025-11-19 09:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,51 +72,73 @@ msgstr ""
 msgid "A caption"
 msgstr ""
 
-#: src/window.py:82
+#: src/window.py:97
 msgid "App"
 msgstr ""
 
-#: src/window.py:119
-msgid "No file selected"
-msgstr ""
-
-#: src/window.py:120
-msgid "Open a .exe file to continue"
-msgstr ""
-
-#: src/window.py:148
-msgid "this app"
+#: src/window.py:134
+msgid "Continue"
 msgstr ""
 
 #: src/window.py:150
-msgid "Add Application Repository?"
+msgid "No file selected"
 msgstr ""
 
 #: src/window.py:151
+msgid "Open a .exe file to continue"
+msgstr ""
+
+#: src/window.py:175
+msgid "Exe Warn Notification"
+msgstr ""
+
+#: src/window.py:176
+msgid ""
+"If the application did not open, it may have some package dependency or need "
+"to be run as Administrator. Run via Terminal!"
+msgstr ""
+
+#: src/window.py:183
+msgid "Execution Failure"
+msgstr ""
+
+#: src/window.py:184
+msgid "The file could not be executed. Run via Terminal!"
+msgstr ""
+
+#: src/window.py:206
+msgid "this app"
+msgstr ""
+
+#: src/window.py:208
+msgid "Add Application Repository?"
+msgstr ""
+
+#: src/window.py:209
 #, python-brace-format
 msgid ""
 "To install {app_name}, the main Flathub application repository needs to be "
 "added to your system."
 msgstr ""
 
-#: src/window.py:153
+#: src/window.py:211
 msgid "Cancel"
 msgstr ""
 
-#: src/window.py:154
+#: src/window.py:212
 msgid "Add Repository"
 msgstr ""
 
-#: src/window.py:170
+#: src/window.py:228
 msgid "Repository Added"
 msgstr ""
 
-#: src/window.py:170
+#: src/window.py:228
 msgid ""
 "The Flathub repository has been added. Please try the installation again."
 msgstr ""
 
-#: src/window.py:171
+#: src/window.py:229
 msgid "OK"
 msgstr ""
 
@@ -140,10 +162,15 @@ msgstr ""
 
 #: src/window.ui:92
 #, python-brace-format
+msgid "Are you sure you want to run this <b>{filename}</b>?"
+msgstr ""
+
+#: src/window.ui:106
+#, python-brace-format
 msgid "We couldn't find a similar app for the <b>{filename}</b>"
 msgstr ""
 
-#: src/window.ui:113
+#: src/window.ui:128
 #, python-brace-format
 msgid ""
 "<b>{filename}</b> is a Windows application and is not compatible with "
@@ -154,11 +181,20 @@ msgid ""
 "application already compatible with Linux."
 msgstr ""
 
-#: src/window.ui:134
+#: src/window.ui:156
+#, python-brace-format
+msgid ""
+"<b>{filename}</b> it is an unknown package.\n"
+"\n"
+"Your computer and personal data may be vulnerable when running applications "
+"from unknown sources."
+msgstr ""
+
+#: src/window.ui:177
 msgid "Close"
 msgstr ""
 
-#: src/window.ui:145
+#: src/window.ui:188
 #, python-brace-format
 msgid "Install {app_name}"
 msgstr ""

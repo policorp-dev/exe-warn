@@ -1,5 +1,7 @@
 project('exe-warn',
-          version: '0.1.0',
+	version: run_command(
+    	'sh', '-c',
+    	'dpkg-parsechangelog -S Version 2>/dev/null || echo 1.0.1').stdout().strip(),
     meson_version: '>= 1.0.0',
   default_options: [ 'warning_level=2', 'werror=false', ],
 )

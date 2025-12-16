@@ -42,6 +42,7 @@ exe_warn_sources = [
   '__init__.py',
   'main.py',
   'window.py',
+  'exe_warn_linux.py',
   config_py,
 ]
 

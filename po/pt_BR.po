@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: exe-warn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-26 14:27-0400\n"
-"PO-Revision-Date: 2025-09-26 14:29-0400\n"
+"POT-Creation-Date: 2025-11-19 09:09-0400\n"
+"PO-Revision-Date: 2025-11-19 09:11-0400\n"
 "Last-Translator: Lucas Salles\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 
 #: data/org.gnome.ExeWarn.desktop.in:3
 msgid "Exe-Warm"
@@ -88,27 +88,51 @@ msgstr ""
 msgid "A caption"
 msgstr "Uma legenda"
 
-#: src/window.py:82
+#: src/window.py:97
 msgid "App"
 msgstr "App"
 
-#: src/window.py:119
+#: src/window.py:134
+msgid "Continue"
+msgstr "Continuar"
+
+#: src/window.py:150
 msgid "No file selected"
 msgstr "Nenhum arquivo selecionado"
 
-#: src/window.py:120
+#: src/window.py:151
 msgid "Open a .exe file to continue"
 msgstr "Abra um arquivo .exe para continuar"
 
-#: src/window.py:148
+#: src/window.py:175
+msgid "Exe Warn Notification"
+msgstr "Notificação do Exe Warn"
+
+#: src/window.py:176
+msgid ""
+"If the application did not open, it may have some package dependency or need "
+"to be run as Administrator. Run via Terminal!"
+msgstr ""
+"Se o aplicativo não abrir, pode ser que ele tenha alguma dependência de "
+"pacote ou precise ser executado como administrador. Execute-o pelo Terminal!"
+
+#: src/window.py:183
+msgid "Execution Failure"
+msgstr "Falha na execução"
+
+#: src/window.py:184
+msgid "The file could not be executed. Run via Terminal!"
+msgstr "O arquivo não pôde ser executado. Execute-o pelo Terminal!"
+
+#: src/window.py:206
 msgid "this app"
 msgstr "este aplicativo"
 
-#: src/window.py:150
+#: src/window.py:208
 msgid "Add Application Repository?"
 msgstr "Adicionar repositório de aplicativos?"
 
-#: src/window.py:151
+#: src/window.py:209
 #, python-brace-format
 msgid ""
 "To install {app_name}, the main Flathub application repository needs to be "
@@ -117,24 +141,24 @@ msgstr ""
 "Para instalar {app_name}, o repositório principal do aplicativo Flathub "
 "precisa ser adicionado ao seu sistema."
 
-#: src/window.py:153
+#: src/window.py:211
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/window.py:154
+#: src/window.py:212
 msgid "Add Repository"
 msgstr "Adicionar repositório"
 
-#: src/window.py:170
+#: src/window.py:228
 msgid "Repository Added"
 msgstr "Repositório adicionado"
 
-#: src/window.py:170
+#: src/window.py:228
 msgid ""
 "The Flathub repository has been added. Please try the installation again."
 msgstr "O repositório Flathub foi adicionado. Tente instalar novamente."
 
-#: src/window.py:171
+#: src/window.py:229
 msgid "OK"
 msgstr "OK"
 
@@ -162,11 +186,16 @@ msgstr ""
 
 #: src/window.ui:92
 #, python-brace-format
+msgid "Are you sure you want to run this <b>{filename}</b>?"
+msgstr "Tem certeza de que deseja executar este <b>{filename}<b>?"
+
+#: src/window.ui:106
+#, python-brace-format
 msgid "We couldn't find a similar app for the <b>{filename}</b>"
 msgstr ""
 "Não conseguimos encontrar um aplicativo semelhante para <b>{filename}</b>"
 
-#: src/window.ui:113
+#: src/window.ui:128
 #, python-brace-format
 msgid ""
 "<b>{filename}</b> is a Windows application and is not compatible with "
@@ -183,11 +212,24 @@ msgstr ""
 "pessoais em risco, e não há garantia de que funcione no seu sistema. Pode "
 "haver um aplicativo semelhante compatível com Linux."
 
-#: src/window.ui:134
+#: src/window.ui:156
+#, python-brace-format
+msgid ""
+"<b>{filename}</b> it is an unknown package.\n"
+"\n"
+"Your computer and personal data may be vulnerable when running applications "
+"from unknown sources."
+msgstr ""
+"<b>{filename}</b> é um pacote desconhecido.\n"
+"\n"
+"Seu computador e seus dados pessoais podem ficar vulneráveis ​​ao executar "
+"aplicativos de fontes desconhecidas."
+
+#: src/window.ui:177
 msgid "Close"
 msgstr "Fechar"
 
-#: src/window.ui:145
+#: src/window.ui:188
 #, python-brace-format
 msgid "Install {app_name}"
 msgstr "Instalar {app_name}"
@@ -234,19 +276,6 @@ msgstr "Instalar {app_name}"
 
 #~ msgid "Install Zoom"
 #~ msgstr "Instalar Zoom"
-
-#, python-brace-format
-#~ msgid ""
-#~ "{filename} is an unknown Windows app.\n"
-#~ "Your computer and personal data may be vulnerable to a breach when "
-#~ "running apps from unknown sources.\n"
-#~ "Some Windows apps may not be compatible with Windows App Support."
-#~ msgstr ""
-#~ "{filename} é um aplicativo desconhecido do Windows.\n"
-#~ "Seu computador e seus dados pessoais podem estar vulneráveis ​​a uma "
-#~ "violação ao executar aplicativos de fontes desconhecidas.\n"
-#~ "Alguns aplicativos do Windows podem não ser compatíveis com o Suporte a "
-#~ "Aplicativos do Windows."
 
 #~ msgid "Abra um arquivo .exe para continuar"
 #~ msgstr "Abra um arquivo .exe para continuar"

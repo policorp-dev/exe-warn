@@ -14,7 +14,7 @@ Package: exe-warn
 Architecture: all
 Depends:
  ${shlibs:Depends},
- ${misc:Depends}, python3-gi, gir1.2-gtk-4.0, libadwaita-1-0
+ ${misc:Depends}, python3-gi, gir1.2-gtk-4.0, libadwaita-1-0, libfuse2t64
 Description: Exibe um alerta quando o usuário tenta executar um arquivo .exe
  Exibe um alerta quando o usuário tenta executar um arquivo .exe do windows no 
  Linux, explucando que ele não tem suporte nativo e sugerindo o uso de uma 

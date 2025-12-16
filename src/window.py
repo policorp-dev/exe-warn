@@ -29,12 +29,16 @@ from gi.repository import Adw, Gtk, Gio, GLib
 from .config import APPNAME, PKGDATADIR, VERSION
 import gettext
 import webbrowser
+from .exe_warn_linux import ExecGuardApplicationLinux
+
 gettext.bindtextdomain(APPNAME, "/usr/share/locale")
 gettext.textdomain(APPNAME)
 _ = gettext.gettext
 caminho_do_policorp_store = "/usr/share/policorp-linux-store/policorp-linux-store"
 caminho_metadata = "/usr/share/policorp-linux-store/data/config/metadata.json"
 # ----------------------------------------------------
+globalfilepath = ''
+globalfullfilepath = ''
 
 @Gtk.Template(resource_path="/org/gnome/ExeWarn/window.ui")
 class ExeWarnWindow(Adw.ApplicationWindow):
@@ -46,6 +50,9 @@ class ExeWarnWindow(Adw.ApplicationWindow):
     message_label: Gtk.Label = Gtk.Template.Child()
     wine_button: Gtk.Button = Gtk.Template.Child()
     native_button: Gtk.Button = Gtk.Template.Child()
+    #-----------------------------------------------
+    subtitle_label_linux: Gtk.Label = Gtk.Template.Child()
+    message_label_linux: Gtk.Label = Gtk.Template.Child()
 
     matched_rule = None
 
@@ -55,8 +62,12 @@ class ExeWarnWindow(Adw.ApplicationWindow):
         app = self.get_application()
         if getattr(app, "file_arg", None):
             filepath = app.file_arg
+            file_path = app.file_path
             filename = filepath.split("/")[-1]
             self.set_title(filename)
+            global globalfilepath, globalfullfilepath
+            globalfilepath = filepath
+            globalfullfilepath = file_path
 
             apps_db = []
             try:
@@ -78,6 +89,9 @@ class ExeWarnWindow(Adw.ApplicationWindow):
             self.subtitle_label_webLink.set_visible(False)
             self.subtitle_label_unknown.set_visible(False)
             self.subtitle_label.set_visible(False)
+
+            self.subtitle_label_linux.set_visible(False)
+            self.message_label_linux.set_visible(False)
 
             if self.matched_rule:
                 app_name = self.matched_rule.get('alternative', {}).get('name', self.matched_rule.get('name', _("App")))
@@ -108,6 +122,21 @@ class ExeWarnWindow(Adw.ApplicationWindow):
                 else:
                     self.wine_button.remove_css_class('destructive-action')
 
+            elif filepath.lower().endswith((".appimage", ".run", ".sh", ".bin")):
+                self.execguardapplicationlinux = ExecGuardApplicationLinux()
+
+                original_subtitle_linux = self.subtitle_label_linux.get_label()
+                self.subtitle_label_linux.set_label(original_subtitle_linux.format(filename=filename))
+
+                original_message_linux = self.message_label_linux.get_label()
+                self.message_label_linux.set_label(original_message_linux.format(filename=filename))
+
+                self.native_button.set_label(_('Continue')
+
+                self.native_button.set_visible(True)
+                self.wine_button.set_visible(True)
+                self.subtitle_label_linux.set_visible(True)
+                self.message_label_linux.set_visible(True)
             else:
                 original_subtitle_unknown = self.subtitle_label_unknown.get_label()
                 self.subtitle_label_unknown.set_label(original_subtitle_unknown.format(filename=filename))
@@ -116,6 +145,7 @@ class ExeWarnWindow(Adw.ApplicationWindow):
                 self.native_button.set_visible(False)
                 self.wine_button.set_visible(True)
                 self.subtitle_label_unknown.set_visible(True)
+
         else:
             self.set_title(_("No file selected"))
             self.subtitle_label.set_label(_("Open a .exe file to continue"))
@@ -130,6 +160,33 @@ class ExeWarnWindow(Adw.ApplicationWindow):
 
     @Gtk.Template.Callback()
     def on_native_clicked(self, button):
+        global globalfilepath, globalfullfilepath
+        filepath = globalfilepath
+        full_file_path = globalfullfilepath
+        if filepath.lower().endswith((".appimage", ".run", ".sh", ".bin")):
+            print(f"Tentando executar Linux App: {full_file_path}")
+
+            exec_guard = ExecGuardApplicationLinux(parent_window=self)
+            sucesso = exec_guard.execute(full_file_path)
+
+            if sucesso:
+                print("Execução concluída com sucesso.")
+                self._enviar_notificacao(
+                    title=_("Exe Warn Notification"),
+                    body=_("If the application did not open, it may have some package dependency or need to be run as Administrator. Run via Terminal!"),
+                    icon_name="emblem-default-symbolic"
+                )
+                self.close()
+            else:
+                print("Falha ao executar o arquivo.")
+                self._enviar_notificacao(
+                    title=_("Execution Failure"),
+                    body=_("The file could not be executed. Run via Terminal!"),
+                    icon_name="dialog-error-symbolic"
+                )
+
+            return
+
         if not self.matched_rule:
             return
 
@@ -216,3 +273,16 @@ class ExeWarnWindow(Adw.ApplicationWindow):
     def is_flatpak(self):
         """Verifica se o aplicativo está a ser executado como um Flatpak."""
         return os.path.exists('/.flatpak-info')
+
+    def _enviar_notificacao(self, title: str, body: str, icon_name: str = "dialog-information"):
+
+        notification = Gio.Notification.new(title)
+        notification.set_body(body)
+
+        notification.set_icon(Gio.ThemedIcon.new(icon_name))
+
+        app = self.get_application()
+        if app:
+            app.send_notification("exec-status", notification)
+        else:
+            print(f"Erro: Não foi possível obter o objeto Gio.Application para enviar a notificação: {title}")
