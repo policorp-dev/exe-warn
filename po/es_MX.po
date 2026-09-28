@@ -1,0 +1,283 @@
+# Portuguese translations for exe-warn package.
+# Copyright (C) 2025 THE exe-warn'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the exe-warn package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: exe-warn\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-19 09:09-0400\n"
+"PO-Revision-Date: 2025-11-19 09:11-0400\n"
+"Last-Translator: Lucas Salles\n"
+"Language-Team: none\n"
+"Language: es_MX\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#: data/org.gnome.ExeWarn.desktop.in:3
+msgid "Exe-Warm"
+msgstr "Exe-Warm"
+
+#: data/org.gnome.ExeWarn.desktop.in:9
+msgid "GTK;"
+msgstr "GTK;"
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:7
+msgid "Exe-warn"
+msgstr "Exe-warn"
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:8
+msgid ""
+"Displays an alert when the user tries to run a Windows .exe file on Linux, "
+"explaining that it is not natively supported and suggesting the use of a "
+"Linux-compatible version."
+msgstr ""
+"Muestra una alerta cuando el usuario intenta ejecutar un archivo .exe de "
+"Windows en Linux, explicando que no es compatible de forma nativa y "
+"sugiriendo utilizar una versión compatible con Linux."
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:10
+msgid ""
+"When the user attempts to run an .exe file, the application intercepts the "
+"action and displays an informative message, explaining that:"
+msgstr ""
+"Cuando el usuario intenta ejecutar un archivo .exe, la aplicación intercepta "
+"la acción y muestra un mensaje informativo que explica lo siguiente:"
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:11
+msgid ""
+".exe files are applications developed for Windows and are not natively "
+"supported on Linux."
+msgstr ""
+"Los archivos .exe son aplicaciones desarrolladas para Windows y no son "
+"compatibles de forma nativa con Linux."
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:12
+msgid ""
+"Running applications from unknown sources can compromise the security of the "
+"system and personal data."
+msgstr ""
+"Ejecutar aplicaciones de fuentes desconocidas puede comprometer la seguridad "
+"del sistema y de los datos personales."
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:13
+msgid ""
+"Whenever available, the user is advised to search for an equivalent or "
+"compatible version for Linux, ensuring greater security and performance."
+msgstr ""
+"Cuando esté disponible, se recomienda buscar una versión equivalente o "
+"compatible con Linux, para obtener mayor seguridad y rendimiento."
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:14
+msgid ""
+"Thus, the application acts as a preventative alert, preventing compatibility "
+"errors and encouraging the use of software suitable for the Linux "
+"environment."
+msgstr ""
+"De esta manera, la aplicación funciona como una alerta preventiva, evitando "
+"errores de compatibilidad y fomentando el uso de software adecuado para el "
+"entorno Linux."
+
+#: data/org.gnome.ExeWarn.metainfo.xml.in:57
+#: data/org.gnome.ExeWarn.metainfo.xml.in:61
+msgid "A caption"
+msgstr "Un título"
+
+#: src/window.py:97
+msgid "App"
+msgstr "Aplicación"
+
+#: src/window.py:134
+msgid "Continue"
+msgstr "Continuar"
+
+#: src/window.py:150
+msgid "No file selected"
+msgstr "No se seleccionó ningún archivo"
+
+#: src/window.py:151
+msgid "Open a .exe file to continue"
+msgstr "Abra un archivo .exe para continuar"
+
+#: src/window.py:175
+msgid "Exe Warn Notification"
+msgstr "Notificación de Exe Warn"
+
+#: src/window.py:176
+msgid ""
+"If the application did not open, it may have some package dependency or need "
+"to be run as Administrator. Run via Terminal!"
+msgstr ""
+"Si la aplicación no se abrió, puede que tenga alguna dependencia de paquetes "
+"o que deba ejecutarse como administrador. ¡Ejecútela desde la terminal!"
+
+#: src/window.py:183
+msgid "Execution Failure"
+msgstr "Error de ejecución"
+
+#: src/window.py:184
+msgid "The file could not be executed. Run via Terminal!"
+msgstr "No se pudo ejecutar el archivo. ¡Ejecútelo desde la terminal!"
+
+#: src/window.py:206
+msgid "this app"
+msgstr "esta aplicación"
+
+#: src/window.py:208
+msgid "Add Application Repository?"
+msgstr "¿Agregar repositorio de aplicaciones?"
+
+#: src/window.py:209
+#, python-brace-format
+msgid ""
+"To install {app_name}, the main Flathub application repository needs to be "
+"added to your system."
+msgstr ""
+"Para instalar {app_name}, es necesario agregar el repositorio principal de "
+"aplicaciones de Flathub a su sistema."
+
+#: src/window.py:211
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/window.py:212
+msgid "Add Repository"
+msgstr "Agregar repositorio"
+
+#: src/window.py:228
+msgid "Repository Added"
+msgstr "Repositorio agregado"
+
+#: src/window.py:228
+msgid ""
+"The Flathub repository has been added. Please try the installation again."
+msgstr ""
+"El repositorio de Flathub se agregó. Intente realizar la instalación "
+"nuevamente."
+
+#: src/window.py:229
+msgid "OK"
+msgstr "Aceptar"
+
+#: src/window.ui:6
+msgid "Exe Warn"
+msgstr "Exe Warn"
+
+#: src/window.ui:53
+#, python-brace-format
+msgid ""
+"<b>{filename}</b> has a similar one called <b>{app_name}</b> and can be "
+"installed from Gnome Software"
+msgstr ""
+"<b>{filename}</b> tiene una aplicación similar llamada <b>{app_name}</b> "
+"que puede instalarse desde GNOME Software"
+
+#: src/window.ui:79
+#, python-brace-format
+msgid ""
+"<b>{filename}</b> has a similar one called <b>{app_name}</b> and can be "
+"installed from the vendor's website"
+msgstr ""
+"<b>{filename}</b> tiene una aplicación similar llamada <b>{app_name}</b> "
+"que puede instalarse desde el sitio web del proveedor"
+
+#: src/window.ui:92
+#, python-brace-format
+msgid "Are you sure you want to run this <b>{filename}</b>?"
+msgstr "¿Está seguro de que desea ejecutar <b>{filename}</b>?"
+
+#: src/window.ui:106
+#, python-brace-format
+msgid "We couldn't find a similar app for the <b>{filename}</b>"
+msgstr ""
+"No pudimos encontrar una aplicación similar para <b>{filename}</b>"
+
+#: src/window.ui:128
+#, python-brace-format
+msgid ""
+"<b>{filename}</b> is a Windows application and is not compatible with "
+"Linux.\n"
+"\n"
+"Running files of this type can put your computer and personal data at risk, "
+"and is not guaranteed to work on your system. There may be a similar "
+"application already compatible with Linux."
+msgstr ""
+"<b>{filename}</b> es una aplicación de Windows y no es compatible con "
+"Linux.\n"
+"\n"
+"Ejecutar archivos de este tipo puede poner en riesgo su computadora y sus "
+"datos personales, y no se garantiza que funcionen en su sistema. Es posible "
+"que ya exista una aplicación similar compatible con Linux."
+
+#: src/window.ui:156
+#, python-brace-format
+msgid ""
+"<b>{filename}</b> it is an unknown package.\n"
+"\n"
+"Your computer and personal data may be vulnerable when running applications "
+"from unknown sources."
+msgstr ""
+"<b>{filename}</b> es un paquete desconocido.\n"
+"\n"
+"Su computadora y sus datos personales pueden quedar vulnerables al ejecutar "
+"aplicaciones de fuentes desconocidas."
+
+#: src/window.ui:177
+msgid "Close"
+msgstr "Cerrar"
+
+#: src/window.ui:188
+#, python-brace-format
+msgid "Install {app_name}"
+msgstr "Instalar {app_name}"
+
+#~ msgid "Unknown Windows application"
+#~ msgstr "Aplicación de Windows desconocida"
+
+#~ msgid ""
+#~ "Running this application is not recommended as its origin is unknown and "
+#~ "it may pose a security risk."
+#~ msgstr ""
+#~ "No se recomienda ejecutar esta aplicación, ya que se desconoce su origen "
+#~ "y puede representar un riesgo para la seguridad."
+
+#, python-brace-format
+#~ msgid "{app_name} can be installed from Software"
+#~ msgstr "{app_name} puede instalarse desde Software"
+
+#~ msgid "Install Windows App Support"
+#~ msgstr "Instalar soporte para aplicaciones de Windows"
+
+#, fuzzy, python-brace-format
+#~ msgid ""
+#~ "\n"
+#~ "                              {filename} is an unknown Windows app.\n"
+#~ "                              Your computer and personal data may be "
+#~ "vulnerable to a breach when running apps from unknown sources.\n"
+#~ "                              Some Windows apps may not be compatible "
+#~ "with Windows App Support.\n"
+#~ "                            "
+#~ msgstr ""
+#~ "\n"
+#~ "                              {filename} es una aplicación de Windows "
+#~ "desconocida.\n"
+#~ "                              Su computadora y sus datos personales "
+#~ "pueden quedar vulnerables a una vulneración al ejecutar aplicaciones "
+#~ "de fuentes desconocidas.\n"
+#~ "                              Algunas aplicaciones de Windows pueden "
+#~ "no ser compatibles con el soporte para aplicaciones de Windows.\n"
+#~ "                            "
+
+#~ msgid "Zoom can be installed from Software"
+#~ msgstr "Zoom puede instalarse desde Software"
+
+#~ msgid "Install Zoom"
+#~ msgstr "Instalar Zoom"
+
+#~ msgid "Abra um arquivo .exe para continuar"
+#~ msgstr "Abra un archivo .exe para continuar"
+
