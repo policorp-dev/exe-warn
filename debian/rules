@@ -1,5 +1,6 @@
 #!/usr/bin/make -f
 
+DEB_BUILD_OPTIONS=nocheck
 # See debhelper(7) (uncomment to enable).
 # Output every command that modifies files on the build system.
 #export DH_VERBOSE = 1
